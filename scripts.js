@@ -207,20 +207,19 @@ function evaluate(a, b) {
     console.log("evaluate");
     switch (true) {
         case addition:
-            display.innerHTML = firstNumber + secondNumber;
-            console.log(firstNumber + secondNumber);
+            display.innerHTML = a + b;
             addition = false;
             break;
         case subtraction:
-            display.innerHTML = firstNumber - secondNumber;
+            display.innerHTML = a - b;
             subtraction = false;
             break;
         case multiplication:
-            display.innerHTML = firstNumber * secondNumber;
+            display.innerHTML = a * b;
             multiplication = false;
             break;
         case division:
-            display.innerHTML = firstNumber / secondNumber;
+            display.innerHTML = a / b;
             division = false;
             break;
     }   
