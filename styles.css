@@ -1,0 +1,96 @@
+div #wrapper-overall {
+    display: flex;
+    justify-content: center;
+}
+
+div #calculator-body {
+    margin: 200px;
+    border: solid black;
+    display: flex;
+    flex-direction: column;
+    background: rgb(208, 203, 243);
+    padding: 15px;
+}
+
+div #brand-name {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+    color: rgb(238, 56, 1);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+div #numbers-display {
+    display: flex;
+    height: 80px;
+    justify-content: center;
+}
+
+div #display {
+    background-color: rgb(106, 129, 106);
+    border: solid black;
+    margin: 10px;
+    color: black;
+    display: flex;
+    flex: 1 1 auto;
+    font-size: 44px;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+div #buttons-board {
+    display: flex;
+    justify-content: center;
+}
+
+div #number-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 700px;
+}
+
+div.row {
+    display: flex;
+    gap: 15px;
+    height: 70px;
+    justify-content: space-evenly;
+}
+
+div #row-zero {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px; 
+    margin-top: 40px; 
+    height: 45px; 
+    gap: 35px; 
+}
+button {
+    border: solid black;
+    width: 100px;
+    font-size: 30px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+button.number {
+    background-color: bisque;
+}
+
+button.special {
+    background-color: tomato;
+    width: 120px;
+    color: white;
+}
+
+button.operator {
+    background-color: rgb(63, 207, 207);
+}
+
+button#equal {
+    background-color: yellow;
+    border: solid firebrick;
+    border-width: 7px;
+}
