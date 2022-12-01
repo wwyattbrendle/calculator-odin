@@ -238,6 +238,7 @@ decimalButton.addEventListener("click", () => {
     }
 })
 
+//functions
 function evaluate(a, b) {
     console.log("evaluate");
     switch (true) {
@@ -261,15 +262,15 @@ function evaluate(a, b) {
 }
 
 function initialize() {
-    let initial = 0;
-    let initialized = false;
-    let firstNumber = 0;
-    let secondNumber = 0;
-    let operatorInitialized = false;
-    let addition = false;
-    let subtraction = false;
-    let multiplication = false;
-    let division = false;
-    let decimalTrigger = false;
+    initial = 0;
+    initialized = false;
+    firstNumber = 0;
+    secondNumber = 0;
+    operatorInitialized = false;
+    addition = false;
+    subtraction = false;
+    multiplication = false;
+    division = false;
+    decimalTrigger = false;
     display.innerHTML = initial;
 }
