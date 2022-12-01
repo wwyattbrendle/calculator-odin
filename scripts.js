@@ -8,6 +8,7 @@ let addition = false;
 let subtraction = false;
 let multiplication = false;
 let division = false;
+let decimalTrigger = false;
 
 //display
 const display = document.getElementById("display");
@@ -32,12 +33,13 @@ const operatorMultiplication = document.getElementById("multiplication");
 const operatorDivision = document.getElementById("division");
 
 //special buttons
+const decimalButton = document.getElementById("decimal");
 const backButton = document.getElementById("back-button");
 const clearButton = document.getElementById("clear-button");
 backButton.textContent = "<--";
 
 //equals button
-const equalButton= document.getElementById("equal");
+const equalButton = document.getElementById("equal");
 
 //add event liseners to add to toShow string
 numberOne.addEventListener("click", () => {
@@ -139,14 +141,13 @@ operatorAddition.addEventListener("click", () => {
         addition = true;
         operatorInitialized = true;
     } else {
-        //if operator is already initialized, solution from last input mus become firstnumber
-        //will have to come back to this part
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
         initialized = false;
         addition = true;
     }
+    decimalTrigger = false;
 });
 
 operatorSubtraction.addEventListener("click", () => {
@@ -157,14 +158,13 @@ operatorSubtraction.addEventListener("click", () => {
         subtraction = true;
         operatorInitialized = true;
     } else {
-        //if operator is already initialized, solution from last input mus become firstnumber
-        //will have to come back to this part
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
         initialized = false;
         subtraction = true;
     }
+    decimalTrigger = false;
 });
 
 operatorMultiplication.addEventListener("click", () => {
@@ -175,33 +175,68 @@ operatorMultiplication.addEventListener("click", () => {
         multiplication = true;
         operatorInitialized = true;
     } else {
-        //if operator is already initialized, solution from last input mus become firstnumber
-        //will have to come back to this part
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
         initialized = false;
         multiplication = true;
     }
+    decimalTrigger = false;
 });
 
 operatorDivision.addEventListener("click", () => {
-    if (!operatorInitialized) {
+     if (!operatorInitialized) {
         firstNumber = parseFloat(display.innerText);
         display.innerHTML = initial;
         initialized = false;
         division = true;
         operatorInitialized = true;
     } else {
-        //if operator is already initialized, solution from last input mus become firstnumber
-        //will have to come back to this part
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
         initialized = false;
         division = true;
     }
+    decimalTrigger = false;
 });
+
+//equal button event listener needs to reset operaterInitialized
+equalButton.addEventListener("click", () => {
+    if (operatorInitialized) {
+        secondNumber = parseFloat(display.innerText);
+        evaluate(firstNumber, secondNumber);
+        firstNumber = parseFloat(display.innerText);
+        operaterInitialized = false;
+        initialized = false;
+    } else {
+        firstNumber = parseFloat(display.innerText);
+        initialized = false;
+    }
+    decimalTrigger = false;
+});
+
+//special button event listeners
+clearButton.addEventListener("click", () => {
+    initialize();
+})
+
+backButton.addEventListener("click", () => {
+    let len = display.innerHTML.length
+    display.innerHTML = display.innerHTML.slice(0, len - 1);
+});
+
+decimalButton.addEventListener("click", () => {
+    if (!decimalTrigger && !initialized) {
+        display.innerHTML = ".";
+        decimalTrigger = true;
+        initialized = true;
+    } else if (!decimalTrigger) {
+        display.innerHTML += ".";
+        decimalTrigger = true;
+        initialized = true;
+    }
+})
 
 function evaluate(a, b) {
     console.log("evaluate");
@@ -215,12 +250,26 @@ function evaluate(a, b) {
             subtraction = false;
             break;
         case multiplication:
-            display.innerHTML = a * b;
+            display.innerHTML = Math.round((a * b) * 10000000) / 10000000;
             multiplication = false;
             break;
         case division:
-            display.innerHTML = a / b;
+            display.innerHTML = Math.round((a / b) * 10000000) / 10000000;
             division = false;
             break;
     }   
+}
+
+function initialize() {
+    let initial = 0;
+    let initialized = false;
+    let firstNumber = 0;
+    let secondNumber = 0;
+    let operatorInitialized = false;
+    let addition = false;
+    let subtraction = false;
+    let multiplication = false;
+    let division = false;
+    let decimalTrigger = false;
+    display.innerHTML = initial;
 }
