@@ -41,7 +41,7 @@ backButton.textContent = "<--";
 //equals button
 const equalButton = document.getElementById("equal");
 
-//add event liseners to add to toShow string
+//add event liseners to add to string
 numberOne.addEventListener("click", () => {
     if (!initialized) {
         display.innerText = "1";
@@ -137,16 +137,14 @@ operatorAddition.addEventListener("click", () => {
     if (!operatorInitialized) {
         firstNumber = parseFloat(display.innerText);
         display.innerHTML = initial;
-        initialized = false;
-        addition = true;
         operatorInitialized = true;
     } else {
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
-        initialized = false;
-        addition = true;
     }
+    initialized = false;
+    addition = true;
     decimalTrigger = false;
 });
 
@@ -154,16 +152,14 @@ operatorSubtraction.addEventListener("click", () => {
     if (!operatorInitialized) {
         firstNumber = parseFloat(display.innerText);
         display.innerHTML = initial;
-        initialized = false;
-        subtraction = true;
         operatorInitialized = true;
     } else {
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
-        initialized = false;
-        subtraction = true;
     }
+    initialized = false;
+    subtraction = true;
     decimalTrigger = false;
 });
 
@@ -171,16 +167,14 @@ operatorMultiplication.addEventListener("click", () => {
     if (!operatorInitialized) {
         firstNumber = parseFloat(display.innerText);
         display.innerHTML = initial;
-        initialized = false;
-        multiplication = true;
         operatorInitialized = true;
     } else {
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
-        initialized = false;
-        multiplication = true;
     }
+    initialized = false;
+    multiplication = true;
     decimalTrigger = false;
 });
 
@@ -188,16 +182,14 @@ operatorDivision.addEventListener("click", () => {
      if (!operatorInitialized) {
         firstNumber = parseFloat(display.innerText);
         display.innerHTML = initial;
-        initialized = false;
-        division = true;
         operatorInitialized = true;
     } else {
         secondNumber = parseFloat(display.innerText);
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
-        initialized = false;
-        division = true;
     }
+    initialized = false;
+    division = true;
     decimalTrigger = false;
 });
 
@@ -208,11 +200,10 @@ equalButton.addEventListener("click", () => {
         evaluate(firstNumber, secondNumber);
         firstNumber = parseFloat(display.innerText);
         operaterInitialized = false;
-        initialized = false;
     } else {
         firstNumber = parseFloat(display.innerText);
-        initialized = false;
     }
+    initialized = false;
     decimalTrigger = false;
 });
 
@@ -229,18 +220,15 @@ backButton.addEventListener("click", () => {
 decimalButton.addEventListener("click", () => {
     if (!decimalTrigger && !initialized) {
         display.innerHTML = ".";
-        decimalTrigger = true;
-        initialized = true;
     } else if (!decimalTrigger) {
         display.innerHTML += ".";
-        decimalTrigger = true;
-        initialized = true;
     }
+    decimalTrigger = true;
+    initialized = true;
 })
 
 //functions
 function evaluate(a, b) {
-    console.log("evaluate");
     switch (true) {
         case addition:
             display.innerHTML = a + b;
